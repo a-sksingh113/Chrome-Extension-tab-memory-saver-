@@ -1,0 +1,22 @@
+{
+  "name": "tab-memory-saver",
+  "version": "1.0.0",
+  "description": "Automatically suspends inactive tabs to save RAM",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "clean": "rimraf dist"
+  },
+  "keywords": [
+    "chrome-extension",
+    "tab-management",
+    "memory-saver"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chrome": "^0.0.268",
+    "typescript": "^5.9.3"
+  },
+  "main": "index.js"
+}

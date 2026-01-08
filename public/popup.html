@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab Memory Saver</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="title">Tab Memory Saver</h1>
+      <div class="status-badge">
+        Status: <span id="statusText" class="status-on">ON</span>
+      </div>
+    </header>
+
+    <!-- Enable/Disable Toggle -->
+    <section class="section">
+      <div class="toggle-container">
+        <label class="toggle-label">
+          <span>Enable Auto-Suspend</span>
+          <label class="switch">
+            <input type="checkbox" id="enableToggle" checked>
+            <span class="slider"></span>
+          </label>
+        </label>
+      </div>
+    </section>
+
+    <!-- Inactivity Time Selector -->
+    <section class="section">
+      <label for="inactivityTime" class="label">Suspend tabs inactive for:</label>
+      <select id="inactivityTime" class="select">
+        <option value="1">1 minute (testing)</option>
+        <option value="2">2 minutes</option>
+        <option value="5">5 minutes</option>
+        <option value="10">10 minutes</option>
+        <option value="15" selected>15 minutes</option>
+        <option value="30">30 minutes</option>
+        <option value="custom">Custom time...</option>
+      </select>
+      
+      <!-- Custom Time Input (hidden by default) -->
+      <div id="customTimeContainer" class="custom-time-container" style="display: none;">
+        <label for="customTimeInput" class="label-small">Enter minutes (1-1440):</label>
+        <div class="custom-time-input-group">
+          <input type="number" id="customTimeInput" class="custom-time-input" 
+                 min="1" max="1440" placeholder="e.g., 20">
+          <button id="applyCustomTime" class="button-small">Apply</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Whitelist -->
+    <section class="section">
+      <label for="whitelist" class="label">
+        Whitelisted Domains
+        <span class="label-hint">(comma-separated)</span>
+      </label>
+      <textarea 
+        id="whitelist" 
+        class="textarea" 
+        placeholder="example.com, google.com"
+        rows="3"
+      ></textarea>
+      <button id="saveButton" class="button button-secondary">Save Whitelist</button>
+    </section>
+
+    <!-- Session Stats -->
+    <section class="section">
+      <div class="stats-container">
+        <div class="stat-item">
+          <span class="stat-label">Tabs suspended this session:</span>
+          <span id="discardedCount" class="stat-value">0</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manual Discard Button -->
+    <section class="section">
+      <button id="discardButton" class="button button-primary">
+        Suspend inactive tabs now
+      </button>
+    </section>
+
+    <!-- Feedback Message -->
+    <div id="feedback" class="feedback" style="display: none;"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer-text">
+        Inactive tabs are suspended to save memory. Click a suspended tab to restore it.
+      </p>
+    </footer>
+  </div>
+
+  <script src="../dist/popup.js"></script>
+</body>
+</html>
